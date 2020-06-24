@@ -2,8 +2,6 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatInputModule } from '@angular/material/input';
-import { MatCard } from '@angular/material/card';
 
 import { TokenProxy } from '../../shared';
 
@@ -17,6 +15,8 @@ import { AuthModel, AuthService } from '../shared';
 })
 export class AuthLoginComponent implements OnInit, OnChanges {
     public form: FormGroup;
+    // public username: FormControl;
+    // public password: FormControl;
     public isSubmitting = false;
 
     private model: AuthModel;
@@ -65,10 +65,13 @@ export class AuthLoginComponent implements OnInit, OnChanges {
     }
 
     private createForm(): void {
+
+        // this.username = new FormControl('', Validators.required);
+        // this.password = new FormControl('', Validators.required);
+
         this.form = this.fb.group({
             username: ['', Validators.required],
             password: ['', Validators.required],
-            isRemember: ''
         });
     }
 }
