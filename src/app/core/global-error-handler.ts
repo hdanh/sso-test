@@ -1,6 +1,5 @@
 import { ErrorHandler, Injector, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class GlobalErrorHandler extends ErrorHandler {

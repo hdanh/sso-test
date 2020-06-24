@@ -1,0 +1,46 @@
+div.container(
+    fxLayout='row' 
+    fxLayoutAlign='center center'
+    )
+    mat-card.form-card
+        mat-card-header
+            mat-card-title
+                h2 Login
+        form(
+            '[formGroup]'='form'
+            '(submit)'='onSubmit()'
+            )
+             mat-card-content
+                div(
+                    fxLayout='column'
+                )
+                    mat-form-field(appearance="fill")
+                            input(
+                                matInput
+                                required
+                                formControlName='username' 
+                                '[placeholder]'='Username')
+                            mat-error Username is required
+                    mat-form-field(appearance="fill")
+                            input(
+                                matInput
+                                type='password'
+                                required
+                                formControlName='password' 
+                                '[placeholder]'='Password')
+                            mat-error Password is required
+
+             mat-card-actions(
+                fxLayout='row',
+                fxLayoutAlign='center center'
+                )
+                button(
+                    '*ngIf'='!isSubmitting'
+                    mat-raised-button 
+                    color='primary' 
+                    '[disabled]'='form.invalid'
+                    ) Login
+
+                mat-spinner(
+                    *ngIf='isSubmitting'
+                )
