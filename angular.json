@@ -118,7 +118,7 @@
   "defaultProject": "sso-test",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "style": "scss"
     }
   }
 }
