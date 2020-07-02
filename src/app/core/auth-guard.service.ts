@@ -1,43 +1,28 @@
+import { Observable } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import {
     CanActivate,
-    Router,
     ActivatedRouteSnapshot,
     RouterStateSnapshot,
     CanActivateChild
 } from '@angular/router';
 
-
-import { TokenProxy } from '../shared';
-
 import { AuthService } from '../auth';
 
 @Injectable()
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuard implements CanActivate {
     constructor(
-        private service: AuthService,
-        private router: Router,
-        private tokenProxy: TokenProxy
+        private service: AuthService
     ) { }
 
-    public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> | boolean {
-        const token = this.tokenProxy.token;
-        const url: string = state.url;
-        // Store the attempted URL for redirecting
-        this.service.redirectUrl = url;
+    canActivate(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot,
+    ): Observable<boolean> {
 
-        if (!token) {
-            this.router.navigate(['/auth/login'], {
-                queryParams: {
-                    redirectUrl: url
-                }
-            });
-            return false;
-        }
-        return true;
-    }
+        return this.service.canActivateProtectedRoutes$
+            .pipe(tap(x => console.log('You tried to go to ' + state.url + ' and this guard said ' + x)));
 
-    public canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> | boolean {
-        return this.canActivate(route, state);
     }
 }

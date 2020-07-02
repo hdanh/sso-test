@@ -44,24 +44,24 @@ export class AuthLoginComponent implements OnInit, OnChanges {
         this.model = { ...this.form.value };
         this.isSubmitting = true;
 
-        this.service
-            .login(this.model)
-            .then((user) => {
-                this.isSubmitting = false;
-                this.tokenProxy.token = user.access_token;
-                const redirectUrl = this.route.queryParams[`redirectUrl`] || '/';
-                this.router.navigateByUrl(redirectUrl);
-            })
-            .catch((error) => {
-                this.isSubmitting = false;
-                if (error.status === 401) {
-                    this.snackBar.open(
-                        'An error has occured',
-                        'Error', {
-                        panelClass: ['error-snack-bar']
-                    });
-                } else { throw error; }
-            });
+        // this.service
+        //     .login(this.model)
+        //     .then((user) => {
+        //         this.isSubmitting = false;
+        //         this.tokenProxy.token = user.access_token;
+        //         const redirectUrl = this.route.queryParams[`redirectUrl`] || '/';
+        //         this.router.navigateByUrl(redirectUrl);
+        //     })
+        //     .catch((error) => {
+        //         this.isSubmitting = false;
+        //         if (error.status === 401) {
+        //             this.snackBar.open(
+        //                 'An error has occured',
+        //                 'Error', {
+        //                 panelClass: ['error-snack-bar']
+        //             });
+        //         } else { throw error; }
+        //     });
     }
 
     private createForm(): void {
