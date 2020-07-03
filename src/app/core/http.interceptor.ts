@@ -6,31 +6,31 @@ import { tap, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class AppHttpInterceptor implements HttpInterceptor {
-    constructor(
-        private snackBar: MatSnackBar
-    ) { }
+  constructor(
+    private snackBar: MatSnackBar
+  ) { }
 
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        return next.handle(req).pipe(
-            tap(evt => {
-                // if (evt instanceof HttpResponse) {
-                //     if (evt.body) {
-                //         alert(JSON.stringify(evt.body));
-                //     }
-                // }
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    return next.handle(req).pipe(
+      tap(evt => {
+        // if (evt instanceof HttpResponse) {
+        //     if (evt.body) {
+        //         alert(JSON.stringify(evt.body));
+        //     }
+        // }
 
-                // if (evt instanceof HttpRequest) {
-                //     this.snackBar.open('Yeah this is a request', 'Request');
-                // }
-            }),
-            catchError((err: any) => {
-                // if (err instanceof HttpErrorResponse) {
-                //     try {
-                //         alert(JSON.stringify(err));
-                //     } catch (e) {
-                //     }
-                // }
-                return of(err);
-            }));
-    }
+        // if (evt instanceof HttpRequest) {
+        //     this.snackBar.open('Yeah this is a request', 'Request');
+        // }
+      }),
+      catchError((err: any) => {
+        // if (err instanceof HttpErrorResponse) {
+        //     try {
+        //         alert(JSON.stringify(err));
+        //     } catch (e) {
+        //     }
+        // }
+        return of(err);
+      }));
+  }
 }

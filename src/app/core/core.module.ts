@@ -6,34 +6,34 @@ import { AuthGuard } from './auth-guard.service';
 import { AuthConfig, OAuthModule, OAuthModuleConfig, OAuthStorage } from 'angular-oauth2-oidc';
 
 export function storageFactory(): OAuthStorage {
-    return sessionStorage;
+  return sessionStorage;
 }
 
 @NgModule({
-    imports: [
-        CommonModule,
-        RouterModule,
-        OAuthModule.forRoot()
-    ],
-    exports: [],
-    declarations: [],
-    providers: [
-        AuthGuard,
-    ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    OAuthModule.forRoot()
+  ],
+  exports: [],
+  declarations: [],
+  providers: [
+    AuthGuard,
+  ],
 })
 export class CoreModule {
-    static forRoot(): ModuleWithProviders<CoreModule> {
-        return {
-            ngModule: CoreModule,
-            providers: [
-                { provide: AuthConfig, useValue: authConfig },
-                { provide: OAuthStorage, useFactory: storageFactory },
-            ]
-        };
+  static forRoot(): ModuleWithProviders<CoreModule> {
+    return {
+      ngModule: CoreModule,
+      providers: [
+        { provide: AuthConfig, useValue: authConfig },
+        { provide: OAuthStorage, useFactory: storageFactory },
+      ]
+    };
+  }
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+    if (parentModule) {
+      throw new Error('CoreModule is already loaded. Import it in the AppModule only');
     }
-    constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
-        if (parentModule) {
-            throw new Error('CoreModule is already loaded. Import it in the AppModule only');
-        }
-    }
+  }
 }

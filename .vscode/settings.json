@@ -1,4 +1,7 @@
 {
-    "appService.defaultWebAppToDeploy": "/subscriptions/f2f6e9f7-ae37-44bc-a92c-695571c19be8/resourceGroups/singhealth/providers/Microsoft.Web/sites/singhealth/slots/pwatest",
-    "appService.deploySubpath": "dist\\sso-test"
+  "appService.defaultWebAppToDeploy": "/subscriptions/f2f6e9f7-ae37-44bc-a92c-695571c19be8/resourceGroups/singhealth/providers/Microsoft.Web/sites/singhealth/slots/pwatest",
+  "appService.deploySubpath": "dist\\sso-test",
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false
 }

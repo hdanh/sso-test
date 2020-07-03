@@ -21,7 +21,7 @@ fs.readFile(commonCliConfig, (err, data) => {
     if (error)
       console.error("An error occurred while overwriting Angular CLI's Webpack config");
 
-    fs.close(file, () => {});
+    fs.close(file, () => { });
   });
 });
 
@@ -38,16 +38,16 @@ fs.readFile(typescriptCliConfig, (err, data) => {
 
   // check if needed to be set or already set
   if (typescriptText.indexOf('directTemplateLoading') === -1 || typescriptText.indexOf('directTemplateLoading: false,') > -1) { return; }
-  
+
   // update the setting
   const output = typescriptText.replace('directTemplateLoading: true,', 'directTemplateLoading: false,');
 
   // rewrite the file
-  const file2 = fs.openSync(typescriptCliConfig, 'r+');  
+  const file2 = fs.openSync(typescriptCliConfig, 'r+');
   fs.writeFile(file2, output, error => {
     if (error)
       console.error("An error occurred while overwriting Angular CLI's Webpack config");
 
-    fs.close(file2, () => {});
+    fs.close(file2, () => { });
   });
 });

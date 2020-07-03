@@ -6,15 +6,15 @@ import { AuthService } from './shared';
 import { NgModule } from '@angular/core';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        AuthRoutingModule
-    ],
-    exports: [],
-    declarations: [
-        AuthComponent,
-        AuthLoginComponent,
-    ],
-    providers: [AuthService],
+  imports: [
+    SharedModule,
+    AuthRoutingModule
+  ],
+  exports: [],
+  declarations: [
+    AuthComponent,
+    AuthLoginComponent,
+  ],
+  providers: [AuthService],
 })
 export class AuthModule { }
