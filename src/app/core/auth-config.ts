@@ -2,7 +2,7 @@ import { AuthConfig } from 'angular-oauth2-oidc';
 
 export const authConfig: AuthConfig = {
   issuer: 'https://singhealthid.azurewebsites.net',
-  clientId: 'mycare', // The "Auth Code + PKCE" client
+  clientId: 'idtest', // The "Auth Code + PKCE" client
   responseType: 'code',
   redirectUri: window.location.origin + '/index.html',
   silentRefreshRedirectUri: window.location.origin + '/callback.html',
