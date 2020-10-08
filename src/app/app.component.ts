@@ -12,6 +12,6 @@ export class AppComponent {
   constructor(
     private authService: AuthService
   ) {
-    this.authService.runInitialLoginSequence();
+    //this.authService.runInitialLoginSequence();
   }
 }
