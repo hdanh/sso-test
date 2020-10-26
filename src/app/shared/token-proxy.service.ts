@@ -5,7 +5,7 @@ import { Subject, Observable } from 'rxjs';
 export class TokenProxy {
   public static readonly TokenPrefix: string = 'Bearer';
 
-  private static readonly tokenKey: string = 'token';
+  private static readonly tokenKey: string = 'access_token';
   private static readonly storage: Storage = localStorage || sessionStorage;
 
   public setTokenAnnounced$: Observable<boolean>;

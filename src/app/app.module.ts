@@ -29,7 +29,9 @@ import { TestComponent } from './test/test.component';
     ),
     SharedModule,
     AuthModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
   ],
   providers: [
     {
